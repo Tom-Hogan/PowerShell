@@ -9,7 +9,9 @@ $source      = '\\file_server\folder_01';   # specify source directory / folder
 $destination = '\\file_server\folder_02';   # specify destination directory / folder
 
 
-# call robocopy to copy folder structure
-#  /e  = include subfolders including empty ones
-#  /xf = which files to exclude, * means all
+<#
+    call robocopy to copy folder structure
+    /e  = include subfolders including empty ones
+    xf = which files to exclude, * means all
+#>
 robocopy $source $destination /e /xf *;
