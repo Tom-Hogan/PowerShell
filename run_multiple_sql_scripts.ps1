@@ -24,23 +24,23 @@ $server_list = @(                           # specify list of SQL Servers
 
 # define log file(s)
 $output_file = $output_path + 'script_run_log.txt';
-$error_file  = $output_path + 'script_run_errors.txt';
+$error_file = $output_path + 'script_run_errors.txt';
 
 
-<#  -----------------------------------------------------------------------------------------------
+<#
     delete output and error files if they exist
-    -------------------------------------------------------------------------------------------- #>
+#>
 Remove-Item $output_file -Force -ErrorAction SilentlyContinue;
 Remove-Item $error_file -Force -ErrorAction SilentlyContinue;
 
 
-<#  ------------------------------------------------------------------------------------------------
+<#
     run script(s) against each server
-    --------------------------------------------------------------------------------------------- #>
+#>
 ForEach ($item in $server_list) { 
     try {
         $script_list = Get-ChildItem -Path $input_path |
-            Where-Object { $_.name -like 'sp_*.sql' -or $_.name -like 'who_*.sql' -or $_.name -like 'maint*.sql' -or $_.name -like 'Install-Core-Blitz*.sql' } |
+            Where-Object { $_.Name -like 'sp_*.sql' -or $_.Name -like 'maint*.sql' -or $_.Name -eq 'Install-All-Scripts.sql' -or $_.Name -eq 'DarlingData.sql' } |
             Sort-Object name;
 
         ForEach ($file in $script_list) {

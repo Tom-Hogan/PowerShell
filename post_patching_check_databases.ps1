@@ -17,12 +17,12 @@ $server_list = @(
 
 try {
     $server_list |
-        Get-DbaDatabase | 
+    Get-DbaDatabase | 
         Select-Object ComputerName, Name, Status, RecoveryModel, @{n = 'Compatibility'; e = { $_.CompatibilityLevel -Replace 'Version', '' } }, Owner, Collation, LastFullBackup, IsSystemObject |
         Sort-Object -Property @{ Expression = 'ComputerName'; Ascending = $true },
                               @{ Expression = 'IsSystemObject'; Descending = $true },
                               @{ Expression = 'Name'; Ascending = $true } |
-    Out-GridView;
+        Out-GridView;
 }
 catch {
     # do nothing

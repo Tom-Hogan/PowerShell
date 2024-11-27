@@ -17,15 +17,15 @@ $server_list = @(                                           # specify list of SQ
 );
 
 
-<#  -----------------------------------------------------------------------------------------------
+<#
     drop output file if it exists
-    -------------------------------------------------------------------------------------------- #>
+#>
 Remove-Item $output_file -Force -ErrorAction SilentlyContinue;
 
 
-<#  -----------------------------------------------------------------------------------------------
+<#
     collect SQL Server database info
-    -------------------------------------------------------------------------------------------- #>
+#>
 ForEach ($item in $server_list) { 
     try {
         $current_server = New-Object -TypeName Microsoft.SqlServer.Management.Smo.Server $item;

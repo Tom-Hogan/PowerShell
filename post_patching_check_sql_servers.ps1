@@ -18,10 +18,10 @@ $server_list = @(
 try {
     $server_list |
         Get-DbaService  |
-        Select-Object ComputerName, DisplayName, State, StartMode |
-        Where-Object StartMode -NE disabled |
-        Sort-Object ComputerName, State, DisplayName |
-        Out-GridView;
+            Select-Object ComputerName, DisplayName, State, StartMode |
+            Where-Object StartMode -NE disabled |
+            Sort-Object ComputerName, State, DisplayName |
+            Out-GridView;
 }
 catch {
     # do nothing
